@@ -1,0 +1,50 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.huishuo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url 'http://neutronium.openscada.org/maven/' }
+}
+
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-cache')
+    implementation('org.springframework.boot:spring-boot-starter-data-redis')
+    implementation('org.springframework.boot:spring-boot-starter-data-rest')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-websocket')
+    implementation('org.apache.kafka:kafka-streams')
+    implementation('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
+    implementation('org.springframework.kafka:spring-kafka')
+    implementation('org.springframework.session:spring-session-data-redis')
+    implementation('org.opcfoundation.ua:opc-ua-stack:1.3.346-SNAPSHOT')
+    implementation('org.openscada.utgard:org.openscada.opc.lib:1.3.0-SNAPSHOT')
+    implementation('org.openscada.utgard:org.openscada.opc.dcom:1.2.0-SNAPSHOT')
+    implementation('org.jinterop:j-interop:2.0.4')
+    implementation('ch.qos.logback:logback-core:1.2.3')
+    implementation('com.alibaba:fastjson:1.1.43')
+    implementation('io.jsonwebtoken:jjwt:0.7.0')
+    implementation('org.slf4j:slf4j-api:1.7.25')
+    runtimeOnly('mysql:mysql-connector-java:8.0.11')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
